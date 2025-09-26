@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock Paper Scissors - Hand Gesture Recognition</title>
+        <meta name="description" content="Professional Rock Paper Scissors game with MediaPipe hand gesture recognition">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/main/style.css">
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>Rock Paper Scissors</h1>
+                <p>Hand Gesture Recognition Game</p>
+            </header>
+
+            <div class="main-content">
+                <div class="instructions">
+                    <h3>How to Play</h3>
+                    <ul>
+                        <li>Click "Enable Webcam" and allow camera access</li>
+                        <li>Show your hand gesture in front of the camera</li>
+                        <li>Supported gestures: Rock (fist), Paper (open hand), Scissors (peace sign)</li>
+                        <li>The game will detect your gesture and play automatically</li>
+                    </ul>
+                </div>
+
+                <div class="camera-panel">
+                    <h2 class="panel-title">Camera Feed</h2>
+                    <section id="demos">
+                        <div id="liveView" class="videoView">
+                            <button id="webcamButton" class="mdc-button mdc-button--raised">
+                                <span class="mdc-button__ripple"></span>
+                                <span class="mdc-button__label">ENABLE WEBCAM</span>
+                            </button>
+                            <div style="position: relative;">
+                                <video id="webcam" autoplay playsinline></video>
+                                <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
+                            </div>
+                            <p id='gesture_output' class="output">
+                                Waiting for camera access...
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="game-panel">
+                    <h2 class="panel-title">Game Status</h2>
+                    
+                    <div class="score-section">
+                        <div class="score-grid">
+                            <div class="score-card">
+                                <div class="score-label">Player</div>
+                                <div class="score-value" id="playerScore">0</div>
+                            </div>
+                            <div class="score-card">
+                                <div class="score-label">Computer</div>
+                                <div class="score-value" id="computerScore">0</div>
+                            </div>
+                            <div class="score-card">
+                                <div class="score-label">Ties</div>
+                                <div class="score-value" id="tieScore">0</div>
+                            </div>
+                        </div>
+                        <button class="reset-button" onclick="resetScores()">Reset Scores</button>
+                    </div>
+
+                    <div class="game-area">
+                        <div class="choices-display">
+                            <div class="choice-item">
+                                <div class="choice-circle" id="playerChoice">?</div>
+                                <div class="choice-label">Your Choice</div>
+                            </div>
+                            <div class="vs-divider">VS</div>
+                            <div class="choice-item">
+                                <div class="choice-circle" id="computerChoice">?</div>
+                                <div class="choice-label">Computer</div>
+                            </div>
+                        </div>
+
+                        <div class="status-area">
+                            <div class="status-text" id="gameStatus">Make a gesture to start playing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/main/main.js" defer></script>
+        <script src="/main/mediapip.js" type="module"></script>
+    </body>
+</html>
